@@ -25,6 +25,7 @@
 
 var HelloWorldLayer = cc.Layer.extend({
     sprite:null,
+    // tag:null,
     ctor:function () {
         //////////////////////////////
         // 1. super init first
@@ -123,10 +124,131 @@ var HelloWorldLayer = cc.Layer.extend({
         // sprite.runAction(repeat_action);
 
         //sequence
+        // var sprite_action1=cc.MoveBy.create(2,cc.p(50,100));
+        // var sprite_action2=cc.RotateBy.create(5,90);
+        // var sequence_action=cc.Sequence.create(sprite_action1,sprite_action2);
+        // sprite.runAction(sequence_action);
+
+        //sound play
+        // cc.audioEngine.playEffect(res.shoot_sound);  //does not fully work for me
+        // tag=cc.audioEngine.playEffect(res.shoot_sound,true);
+        // cc.audioEngine.resumeEffect(soundId);
+        // cc.audioEngine.setEffectsVolume(0.1);
+
+        //schedule
+        // this.scheduleOnce(StopSound,6);
+        // cc.audioEngine.playEffect(res.shoot_sound,true);
+        // cc.audioEngine.playMusic(res.bgMusic,false);
+        // this.scheduleOnce(StopMusic,3);
+        // this.scheduleOnce(PauseMusic,5);
+        // this.scheduleOnce(ResumeMusic,2);
+
+        //single touch events
+        // if (cc.sys.capabilities.hasOwnProperty('touches')){
+        //     var sprite_action=cc.RotateTo.create(2,90);
+        //     sprite.runAction(sprite_action);
+
+        //     cc.eventManager.addListener({
+        //         event:cc.EventListener.TOUCH_ONE_BY_ONE,
+
+        //         onTouchBegan:function(touch,event)
+        //         {
+        //             cc.log("touch began"+touch.getLocationX());
+        //             // cc.log(touch.getLocationY());
+        //             return true;
+        //         },
+
+        //         //moved
+        //         onTouchMoved:function(touch,event){
+        //             cc.log("touch moved"+touch.getLocationX());
+        //         },
+
+        //         //end
+        //         onTouchEnded:function(touch,event){
+        //             cc.log("touch end"+touch.getLocationX());
+        //         },
+
+        //         onTouchCancelled:function(touch,event){
+        //             cc.log("Touch cancelled");
+        //         }
+        //     },this);
+        // }
+
+        // if(cc.sys.capabilities.hasOwnProperty('touches')){
+        //     cc.eventManager.addListener({
+        //         event:cc.EventListener.TOUCH_ALL_AT_ONCE,
+
+        //         onTouchesBegan:function(touches,event){
+        //             if (touches.length>1){
+        //             cc.log("Touch Began 1 "+touches[0].getLocationX());
+        //             cc.log("Touch Began 2 "+touches[1].getLocationX());
+        //             }
+        //             else{
+        //                 cc.log('here');
+        //             }
+        //         }
+        //     },this)
+        // }
+
         
+        //mouse events
+        // var click=false;
+        // if(cc.sys.capabilities.hasOwnProperty('mouse')){
+        //     cc.log('here');
+        //     cc.eventManager.addListener({
+        //         event:cc.EventListener.MOUSE,
+                
+        //         onMouseDown:function(event){
+        //             if(event.getButton()==cc.EventMouse.BUTTON_LEFT){
+        //                 click=true;
+        //                 var sprite_action=cc.RotateBy.create(2,90);
+        //                 sprite.runAction(sprite_action);
+        //             }
+                    
+        //         },
+        //         onMouseUp:function(event){
+        //             if(event.getButton()==cc.EventMouse.BUTTON_LEFT){
+        //                 click=false;
+        //                 var sprite_action=cc.RotateBy.create(2,-90);
+        //                 sprite.runAction(sprite_action);
+        //                 // cc.log("mouse location"+event.getLocationX());
+
+        //             }
+        //         },
+        //         onMouseMove:function(event){
+        //             var sprite_action1=cc.MoveTo.create(0,cc.p(event.getLocationX(),event.getLocationY()))
+        //             if(click){
+        //                 sprite.runAction(sprite_action1);
+        //             }
+                    
+        //         },
+        //         onMouseScroll:function(event){
+        //             cc.log("mouse location"+event.getLocationX());
+        //         }
+        //     },this);
+        // }
+
+        
+
         return true;
     }
 });
+
+// var PauseMusic=function(){
+//     cc.audioEngine.pauseMusic();
+// }
+// var ResumeMusic=function(){
+//     cc.audioEngine.resumeMusic();
+// }
+// var StopSound=function () {
+//     // cc.audioEngine.stopAllEffects();
+//     cc.audioEngine.stopEffect(tag);
+// };
+// var StopMusic=function () {
+//     // cc.audioEngine.stopAllEffects();
+//     cc.audioEngine.stopMusic();
+// };
+
 
 var HelloWorldScene = cc.Scene.extend({
     onEnter:function () {
