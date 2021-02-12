@@ -26,6 +26,7 @@ var res = {
     HelloWorld_png : "res/HelloWorld.png",
     // CloseNormal_png:"res/HelloWorld.png"
     CloseNormal_png:"res/CloseNormal.png",
+    CloseSelected_png:"res/CloseSelected.png",
     shoot_sound:"res/Sound/shoot.mp3",
     bgMusic:"res/Sound/background.mp3"
 };

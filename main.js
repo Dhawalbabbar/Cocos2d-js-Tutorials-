@@ -111,6 +111,8 @@ cc.game.onStart = function(){
 
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
+        //order matters
+        cc.director.runScene(new HelloWorldScene2());
         cc.director.runScene(new HelloWorldScene());
     }, this);
 };

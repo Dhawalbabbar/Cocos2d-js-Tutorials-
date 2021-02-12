@@ -21,25 +21,19 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-
+var INITIALIZED=false;
 
 var HelloWorldLayer = cc.Layer.extend({
     sprite:null,
     // tag:null,
     ctor:function () {
-        //////////////////////////////
-        // 1. super init first
         this._super();
 
-        /////////////////////////////
-        // 2. add a menu item with "X" image, which is clicked to quit the program
-        //    you may modify it.
-        // ask the window size
         var size = cc.winSize;
 
+        //adding sprite
         var sprite=new cc.Sprite.create(res.CloseNormal_png);
         sprite.setAnchorPoint(cc.p(0.5,0.5));
-        // sprite.setPosition(cc.p(0,0));
         sprite.setPosition(cc.p(size.width/2,size.height/2));
         this.addChild(sprite,0);
 
@@ -228,12 +222,82 @@ var HelloWorldLayer = cc.Layer.extend({
         //     },this);
         // }
 
-        
+        //keyboard
+        // if(cc.sys.capabilities.hasOwnProperty('keyboard')){
+        //     cc.log('here');
+        //     cc.eventManager.addListener({
+        //         event:cc.EventListener.KEYBOARD,
+
+        //         onKeyPressed:function(keypr,event){
+        //             cc.log("Key pressed "+keypr.toString());
+        //         },
+
+        //         onKeyReleased:function(keypr,event){
+        //             cc.log("Key released "+keypr.toString());
+        //         }
+        //     },this);
+        // }
+
+        //menu
+        // var playItem=new cc.MenuItemFont("Play",play);
+        // var highScoresItem=new cc.MenuItemFont("HighScores",highScores);
+        // var settingsItem=new cc.MenuItemFont("Settings",settings);
+        // var imageItem=new cc.MenuItemImage(res.CloseNormal_png,res.CloseSelected_png,imageFunc);
+
+        // var items=4;
+        // // imageItem.setPosition(cc.p(size.width/2,(size.height/items+1)*4));
+        // // playItem.setPosition(cc.p(size.width/2,(size.height/items+1)*3));
+        // // highScoresItem.setPosition(cc.p(size.width/2,(size.height/items+1)*2));
+        // // settingsItem.setPosition(cc.p(size.width/2,(size.height/items+1)*1));
+
+        // var menu=new cc.Menu(playItem,highScoresItem,settingsItem,imageItem);
+        // menu.alignItemsVerticallyWithPadding(size.height/(items+1));
+        // // menu.setPosition(cc.p(0,0));
+
+        // this.addChild(menu);
+
+        //scene management
+        //do the initialized thing and add scene to project.json and main.js
+        // var menuItem1=new cc.MenuItemFont("Push",play);
+        // var menuItem2=new cc.MenuItemFont("replace",replace);
+        // var menu=new cc.Menu(menuItem1,menuItem2);
+        // menu.alignItemsVertically();
+        // this.addChild(menu);
+
+        //animation
+        // var spriteAction=new cc.EaseBounceOut( new cc.MoveBy(2,cc.p(200,0)));
+        // var spriteAction=new cc.EaseCircleActionIn( new cc.MoveBy(2,cc.p(200,0)));
+        // sprite.runAction(spriteAction);
+
+        //scheduling
 
         return true;
     }
 });
+// var replace=function(){
+//     var scene=new HelloWorldScene2();
+//     cc.director.runScene(scene);
+// }
+// var play=function(){
+//     var scene= new HelloWorldScene2();
+//     // cc.director.pushScene(new cc.TransitionFade(4,scene,cc.Color(255, 255, 0)));
+//     // cc.director.pushScene(new cc.TransitionJumpZoom(2,scene));
+//     cc.director.pushScene(new cc.TransitionFade(3.0,scene));
+//     // cc.easeActionWithAction(action);
+// }
 
+// var imageFunc=function(){
+//     cc.log('menu image func');
+// }
+// var play=function(){
+//     cc.log("in play function");
+// }
+// var highScores=function(){
+//     cc.log("in highScore function");
+// }
+// var settings=function(){
+//     cc.log("in settings function");
+// }
 // var PauseMusic=function(){
 //     cc.audioEngine.pauseMusic();
 // }
@@ -253,8 +317,12 @@ var HelloWorldLayer = cc.Layer.extend({
 var HelloWorldScene = cc.Scene.extend({
     onEnter:function () {
         this._super();
-        var layer = new HelloWorldLayer();
-        this.addChild(layer);
+        if (INITIALIZED==false){
+            INITIALIZED=true;
+            var layer = new HelloWorldLayer();
+            this.addChild(layer);
+        }
+        
     }
 });
 
